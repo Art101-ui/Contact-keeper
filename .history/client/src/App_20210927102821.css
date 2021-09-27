@@ -323,10 +323,6 @@ button {
   font: inherit;
 }
 
-/* input:required:invalid {
-  border-color: #c00000;
-} */
-
 .form-group {
   margin: 1.2rem 0;
 }

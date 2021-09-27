@@ -16,8 +16,10 @@ const Register = (props) => {
             setAlert(error,'danger')
             clearErrors()
         }
-        
-       
+        else if(error ===undefined){
+            setAlert('Please enter a password with 6 or more characters','danger')
+            clearErrors()
+        }
         // eslint-disable-next-line
     },[error,isAuthenticated, props.history])
     const [user,setUser]=useState({
@@ -37,7 +39,7 @@ const Register = (props) => {
         e.preventDefault()
         if(name===''||email===''||password===''){
             setAlert('Please enter all fields','danger')
-        }else if(password!==password2){
+        }else if(password2!==password){
             setAlert('Passwords do not match','danger')
         }else{
             register({name,password,email})
@@ -49,14 +51,14 @@ const Register = (props) => {
     return (
         <div className="form-container">
             <h1>Account <span className="text-primary">Register</span></h1>
-            <form onSubmit={onSubmit} >
+            <form >
                 <div className="form-group">
                     <label htmlFor="name"/>Name
-                    <input type="text" name="name" value={name} onChange={onChange} required />
+                    <input type="text" name="name" value={name} onChange={onChange}  />
                 </div>
                 <div className="form-group">
                     <label htmlFor="email"/>Email Address
-                    <input type="email" name="email" value={email} onChange={onChange} required  />
+                    <input type="email" name="email" value={email} onChange={onChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password"/>Password
@@ -66,7 +68,7 @@ const Register = (props) => {
                     <label htmlFor="password2"/>Confirm Password
                     <input type="password" name="password2" value={password2} onChange={onChange} required minLength='6' />
                 </div>
-                <input type="submit" value="Register" className='btn btn-primary btn-block'  />
+                <input type="submit" value="Register" className='btn btn-primary btn-block' onClick={onSubmit} />
             </form>
         </div>
     )

@@ -12,7 +12,7 @@ const User = require('../models/User')
 router.post('/',[
     check('name','Please input your name').not().isEmpty(),
     check('email','Please enter a valid email').isEmail(),
-    check('password','Please enter a password with 6 or more characters').isLength({min:5})
+    check('password','Please enter a password with 6 or more characters').isLength({min:6})
 ],async (req,res)=>{
     const errors = validationResult(req)
 
@@ -24,11 +24,10 @@ router.post('/',[
 
     try {
         // compare with 
-        let user = await User.findOne({ email })
+        let user = await User.findOne({email})
         if(user){
             return res.status(400).json({msg:'User already exists'})
         }
-        
         user = new User({
             name,
             email,
@@ -51,7 +50,7 @@ router.post('/',[
         })
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server Error')
+        return res.status(500).send('Server Error')
     }
 })
 

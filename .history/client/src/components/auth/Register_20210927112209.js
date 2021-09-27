@@ -16,7 +16,10 @@ const Register = (props) => {
             setAlert(error,'danger')
             clearErrors()
         }
-        
+        // else if(error === undefined){
+        //     setAlert('Please enter correct password','danger')
+        //     clearErrors()
+        // }
        
         // eslint-disable-next-line
     },[error,isAuthenticated, props.history])
@@ -52,7 +55,7 @@ const Register = (props) => {
             <form onSubmit={onSubmit} >
                 <div className="form-group">
                     <label htmlFor="name"/>Name
-                    <input type="text" name="name" value={name} onChange={onChange} required />
+                    <input type="text" name="name" value={name} onChange={onChange}  />
                 </div>
                 <div className="form-group">
                     <label htmlFor="email"/>Email Address

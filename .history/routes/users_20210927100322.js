@@ -12,7 +12,7 @@ const User = require('../models/User')
 router.post('/',[
     check('name','Please input your name').not().isEmpty(),
     check('email','Please enter a valid email').isEmail(),
-    check('password','Please enter a password with 6 or more characters').isLength({min:5})
+    check('password','Please enter a password with 6 or more characters').isLength({min:6})
 ],async (req,res)=>{
     const errors = validationResult(req)
 
@@ -28,7 +28,9 @@ router.post('/',[
         if(user){
             return res.status(400).json({msg:'User already exists'})
         }
-        
+        else if(password.length<=6){
+        return res.status(400).json({msg:'Please enter a password with 6 or more characters'})
+       } 
         user = new User({
             name,
             email,

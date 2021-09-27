@@ -52,7 +52,7 @@ const Register = (props) => {
             <form onSubmit={onSubmit} >
                 <div className="form-group">
                     <label htmlFor="name"/>Name
-                    <input type="text" name="name" value={name} onChange={onChange} required />
+                    <input type="text" name="name" value={name} onChange={onChange}  />
                 </div>
                 <div className="form-group">
                     <label htmlFor="email"/>Email Address

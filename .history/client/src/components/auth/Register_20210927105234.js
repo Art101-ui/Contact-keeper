@@ -16,7 +16,10 @@ const Register = (props) => {
             setAlert(error,'danger')
             clearErrors()
         }
-        
+        // else if(error === undefined){
+        //     setAlert('Please enter correct password','danger')
+        //     clearErrors()
+        // }
        
         // eslint-disable-next-line
     },[error,isAuthenticated, props.history])
@@ -37,7 +40,7 @@ const Register = (props) => {
         e.preventDefault()
         if(name===''||email===''||password===''){
             setAlert('Please enter all fields','danger')
-        }else if(password!==password2){
+        }else if(password2!==password){
             setAlert('Passwords do not match','danger')
         }else{
             register({name,password,email})
@@ -49,10 +52,10 @@ const Register = (props) => {
     return (
         <div className="form-container">
             <h1>Account <span className="text-primary">Register</span></h1>
-            <form onSubmit={onSubmit} >
+            <form onClick={onSubmit} >
                 <div className="form-group">
                     <label htmlFor="name"/>Name
-                    <input type="text" name="name" value={name} onChange={onChange} required />
+                    <input type="text" name="name" value={name} onChange={onChange}  />
                 </div>
                 <div className="form-group">
                     <label htmlFor="email"/>Email Address

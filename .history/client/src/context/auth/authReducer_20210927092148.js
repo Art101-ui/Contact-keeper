@@ -33,7 +33,8 @@ export default (state,action) => {
                user:null,
                error:action.payload
             }
-       
+            // eslint-disable-next-line
+            console.log(state.error)
 // eslint-disable-next-line
         case USER_LOADED:
             return{
